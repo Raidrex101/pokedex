@@ -18,7 +18,7 @@ export function pokeContainer(pokemon) {
         </div>
         
         `
-
+        
     container.appendChild(pokeCard)
 
 }

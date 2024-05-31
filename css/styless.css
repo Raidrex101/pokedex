@@ -10,8 +10,9 @@
     }
   }
 
-body header {
-    background-image: url("/pokedex/pokedex/img/background.jpeg");
+body {
+    background-image: url("/img/background.jpeg");
+    background-size: cover;
 }
 
 #start{
