@@ -1,4 +1,5 @@
 import { pokeContainer } from './mainContainer.js'
+import { typesColor } from './mainContainer.js'
 
 const getdata = async (id) => {
     try {
@@ -6,8 +7,9 @@ const getdata = async (id) => {
             .then((response) => response.json())
             .then((data) => {
                 pokeContainer(data)
+                typesColor(data)
                 console.log(data)
-                /* data[0].types[0].type.url */
+                
             })
     } catch (error) {
         console.log(error);

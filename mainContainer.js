@@ -1,6 +1,40 @@
+
+/* const typeColor = {
+    normal:'#A8A878' ,
+    bug: '#A8B820',
+    fire: '#F08030',
+    water: '#6890F0',
+    electric: '#F8D030',
+    grass: ,
+    ice: ,
+    fighting: ,
+    poison: ,
+    ground: ,
+    flying: ,
+    psychic: ,
+    rock: ,
+    ghost: ,
+    dragon: ,
+    dark: ,
+    steel: ,
+    fairy: ,
+
+} */
+
+
+export function typesColor (pokemon) {
+    const types = pokemon.types.map(tipo => tipo.type.name)
+    const tipo1 = types[0]
+    const tipo2 = types[1] || ''
+    
+    if (tipo1 || tipo2 == "bug") {
+        
+    }
+}
 export function pokeContainer(pokemon) {
 
     const types = pokemon.types.map(tipo => tipo.type.name)
+    console.log(types)
     const tipo1 = types[0]
     const tipo2 = types[1] || ''
 
@@ -18,7 +52,7 @@ export function pokeContainer(pokemon) {
         </div>
         
         `
-        
+
     container.appendChild(pokeCard)
 
 }
