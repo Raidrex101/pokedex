@@ -1,58 +1,56 @@
-
-/* const typeColor = {
+const typeColor = {
     normal:'#A8A878' ,
     bug: '#A8B820',
     fire: '#F08030',
     water: '#6890F0',
     electric: '#F8D030',
-    grass: ,
-    ice: ,
-    fighting: ,
-    poison: ,
-    ground: ,
-    flying: ,
-    psychic: ,
-    rock: ,
-    ghost: ,
-    dragon: ,
-    dark: ,
-    steel: ,
-    fairy: ,
+    grass: '#78C850',
+    ice: '#98D8D8',
+    fighting: '#C03028',
+    poison: '#A040A0',
+    ground: '#E0C068',
+    flying: '#A890F0',
+    psychic: '#F85888',
+    rock: '#B8A038',
+    ghost: '#705898',
+    dragon: '#7038F8',
+    dark: '#705848',
+    steel: '#B8B8D0',
+    fairy: '#F0B6BC',
 
-} */
+}
 
 
-export function typesColor (pokemon) {
+ export function typesColor (pokemon) {
     const types = pokemon.types.map(tipo => tipo.type.name)
     const tipo1 = types[0]
     const tipo2 = types[1] || ''
     
-    if (tipo1 || tipo2 == "bug") {
-        
-    }
+    const color1 = typeColor[tipo1]
+    const color2 = tipo2 ? typeColor[tipo2] : ''
+    return {color1, color2}
 }
 export function pokeContainer(pokemon) {
 
     const types = pokemon.types.map(tipo => tipo.type.name)
-    console.log(types)
+    
     const tipo1 = types[0]
-    const tipo2 = types[1] || ''
-
-    /* console.log(tipo1, tipo2); */
+    const tipo2 = types[1]
+    
+    const {color1, color2} = typesColor(pokemon)
+    
     const container = document.getElementById('container')
     const pokeCard = document.createElement('div')
     pokeCard.classList.add('border', 'ms-3', 'my-3', 'shadow-xl')
     pokeCard.innerHTML = `
-        <img id="pokeSprite" src="${pokemon.sprites.front_default}" alt="Quien es ese pokemon?">
-        <h1 class="text-center">#${pokemon.id}</h1>
-        <h2 class="text-center" id="pokeName">${pokemon.name}</h2>
-        <div class="text-center" id="poketipos">
-        <p>${tipo1}</p>
-        <p>${tipo2}</p>
-        </div>
-        
-        `
-
-    container.appendChild(pokeCard)
-
+    <img id="pokeSprite" src="${pokemon.sprites.front_default}" alt="Quien es ese pokemon?">
+    <h1 class="text-center">#${pokemon.id}</h1>
+    <h2 class="text-center" id="pokeName">${pokemon.name}</h2>
+    <div class="text-center" id="poketipos">
+    <p class= "rounded-full mx-4 my-1 border-2" style ="background-color:${color1}">${tipo1}</p>
+    ${tipo2 ? `<p id="tipo2" class="rounded-full mx-4 my-2 border-2" style="background-color:${color2}">${tipo2}</p>` : ''}
+    </div>
+    
+    `
+    container.appendChild(pokeCard)   
 }
