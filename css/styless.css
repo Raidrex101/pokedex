@@ -1,0 +1,25 @@
+@keyframes acercar-alejar {
+    0% {
+      transform: scale(1); /* Estado inicial (normal) */
+    }
+    50% {
+      transform: scale(1.2); /* Acercamiento al 50% de la animación */
+    }
+    100% {
+      transform: scale(1); /* Vuelve al estado inicial al final */
+    }
+  }
+
+body header {
+    background-image: url("/pokedex/pokedex/img/background.jpeg");
+}
+
+#start{
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
+    animation-name: acercar-alejar;
+    animation-duration: 2s; /* Duración de la animación */
+    animation-iteration-count: infinite;
+}
