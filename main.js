@@ -1,6 +1,9 @@
-export const pokemonData = []
+export const pokemonData = [] 
 import { pokeContainer } from "./mainContainer.js"
 import { typesColor } from "./mainContainer.js"
+document.addEventListener('DOMContentLoaded', () => {
+    pokedata(1)
+})
 
 
 const getdata = async (id) => {
@@ -8,21 +11,36 @@ const getdata = async (id) => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
         const data = await response.json()
         pokemonData.push(data)
-        
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 }
 
-const pokedata = async (number) => {
-    for (let i = 1; i <= number; i++) {
 
+export const pokedata = async (pagina) => {
+    pokemonData.length = 0
+    let start, end
+
+    if (pagina === 1) {
+        start = 1
+        end = 50  
+    }else if (pagina === 2) {
+        start = 51
+        end = 100
+    }else if (pagina === 3) {
+        start = 101
+        end = 151
+    }
+
+    for (let i = start; i <= end; i++) {
         await getdata(i)
     }
     pokemonFetched()
 }
 
-const pokemonFetched = () => {
+ const pokemonFetched = () => {
+    const container = document.getElementById("container")
+    container.innerHTML = ''
     pokemonData.forEach(pokemon => {
         pokeContainer(pokemon)
         typesColor(pokemon)
@@ -30,7 +48,17 @@ const pokemonFetched = () => {
 }
 
 
-pokedata(50)
+const paginas = document.querySelectorAll(".page")
+paginas.forEach(button => {
+    button.addEventListener('click', () => {
+
+        const pagina = parseInt(button.innerText)
+        console.log(pagina)
+        pokedata(pagina)
+    })
+})
+
+
 
 console.log(pokemonData)
 

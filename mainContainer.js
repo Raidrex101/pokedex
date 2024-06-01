@@ -30,6 +30,7 @@ const typeColor = {
     const color2 = tipo2 ? typeColor[tipo2] : ''
     return {color1, color2}
 }
+
 export function pokeContainer(pokemon) {
 
     const types = pokemon.types.map(tipo => tipo.type.name)
@@ -45,7 +46,7 @@ export function pokeContainer(pokemon) {
     pokeCard.innerHTML = `
     <img id="pokeSprite" src="${pokemon.sprites.front_default}" alt="Quien es ese pokemon?">
     <h1 class="text-center">#${pokemon.id}</h1>
-    <h2 class="text-center" id="pokeName">${pokemon.name}</h2>
+    <h2 class="text-center " id="pokeName">${pokemon.name}</h2>
     <div class="text-center" id="poketipos">
     <p class= "rounded-full mx-4 my-1 border-2" style ="background-color:${color1}">${tipo1}</p>
     ${tipo2 ? `<p id="tipo2" class="rounded-full mx-4 my-2 border-2" style="background-color:${color2}">${tipo2}</p>` : ''}
