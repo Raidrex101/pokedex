@@ -1,11 +1,24 @@
- html body head {
-    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(36, 223, 236) 17.8%, rgb(37, 1, 85) 100.2% );
-    padding: 0;
-    margin: 0;
+div ::-webkit-scrollbar {
+    width: 12px;
+    /* Ancho de toda la barra de desplazamiento */
 }
 
-.contenedor {                                     /*  Elemento padre  */
-    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(36, 223, 236) 17.8%, rgb(37, 1, 85) 100.2% );
+div ::-webkit-scrollbar-track {
+    background: rgb(190, 241, 2);
+    /* Color del área de seguimiento */
+}
+
+div ::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 182, 182);
+    /* Color del botón de desplazamiento */
+    border-radius: 20px;
+    /* Redondez del botón de desplazamiento */
+    border: 3px solid rgb(0, 0, 0);
+}
+
+.contenedor {
+    /*  Elemento padre  */
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(36, 223, 236) 17.8%, rgb(37, 1, 85) 100.2%);
     display: flex;
     justify-content: space-evenly;
 }
@@ -18,15 +31,15 @@
 button {
     height: 55vh;
     width: 3vw;
-    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(2,245,255,1) 17.8%, rgb(147, 231, 121) 100.2% );
-    color:  rgb(0, 0, 0);
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(2, 245, 255, 1) 17.8%, rgb(147, 231, 121) 100.2%);
+    color: rgb(0, 0, 0);
     border: 5px solid black;
-
 }
 
 
-.infoPokemon {                                     /*  Elemento padre  */
-    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(147, 231, 121) 17.8%, rgba(2,245,255,1) 100.2% );
+.infoPokemon {
+    /*  Elemento padre  */
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(147, 231, 121) 17.8%, rgba(2, 245, 255, 1) 100.2%);
     border: 10px solid black;
     display: flex;
     align-items: center;
@@ -41,13 +54,36 @@ button {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
+    word-wrap: break-word;
+    /* Ajustar el texto al ancho del div */
+    overflow-y: scroll;
     background-color: rgb(249, 249, 252);
     border: 5px solid black;
     height: 22vh;
     width: 10vw;
 }
 
-.stats p{
+.abilities {
+    background-color: rgb(249, 249, 252);
+    word-wrap: break-word;
+    /* Ajustar el texto al ancho del div */
+    overflow-y: scroll;
+    border: 5px solid black;
+    height: 20vh;
+    width: 10vw;
+}
+
+.moves {
+    background-color: rgb(249, 249, 252);
+    word-wrap: break-word;
+    /* Ajustar el texto al ancho del div */
+    overflow-y: scroll;
+    border: 5px solid black;
+    height: 20vh;
+    width: 10vw;
+}
+
+.infoPokemon p {
     padding-left: 1em;
     font-family: "Ubuntu", sans-serif;
     font-weight: 800;
@@ -57,22 +93,9 @@ button {
     color: transparent;
 }
 
-.abilities {
-    background-color: rgb(249, 249, 252);
-    border: 5px solid black;
-    height: 20vh;
-    width: 10vw;
-}
-
-.moves {
-    background-color: rgb(249, 249, 252);
-    border: 5px solid black;
-    height: 20vh;
-    width: 10vw;
-}
-
-.pokeCard {                                     /*  Elemento padre  */
-    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(147, 231, 121) 17.8%, rgba(2,245,255,1) 100.2% );
+.pokeCard {
+    /*  Elemento padre  */
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(147, 231, 121) 17.8%, rgba(2, 245, 255, 1) 100.2%);
     border: 10px solid black;
     display: flex;
     align-items: center;
@@ -109,8 +132,9 @@ button {
     padding: 1em;
 }
 
-.nextPokemon {                                     /*  Elemento padre  */
-    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(147, 231, 121) 17.8%, rgba(2,245,255,1) 100.2% );
+.galeriaPokemon {
+    /*  Elemento padre  */
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(147, 231, 121) 17.8%, rgba(2, 245, 255, 1) 100.2%);
     border: 10px solid black;
     display: flex;
     align-items: center;
@@ -124,6 +148,7 @@ button {
 
 .onepoke {
     background-color: rgb(249, 249, 252);
+    flex-wrap: wrap;
     border: 5px solid black;
     height: 20vh;
     width: 10vw;
@@ -141,4 +166,12 @@ button {
     border: 5px solid black;
     height: 20vh;
     width: 10vw;
+}
+
+.galeriaPokemon img {
+    height: 20vh;
+    width: 10vw;
+    background-image: url(../img/fondo3.jpeg);
+    background-size: cover;
+
 }
