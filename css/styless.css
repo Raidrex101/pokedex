@@ -11,13 +11,14 @@
   }
 
 body {
-    background-image: url("/img/background.jpeg");
+    background-image: url("../img/fondo.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
 #start{
   cursor: pointer;
-  color: yellow;
+  color: white;
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
     font-style: normal;

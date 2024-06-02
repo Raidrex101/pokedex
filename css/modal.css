@@ -1,0 +1,144 @@
+ html body head {
+    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(36, 223, 236) 17.8%, rgb(37, 1, 85) 100.2% );
+    padding: 0;
+    margin: 0;
+}
+
+.contenedor {                                     /*  Elemento padre  */
+    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(36, 223, 236) 17.8%, rgb(37, 1, 85) 100.2% );
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bloqueCentral {
+    display: inline-flex;
+    align-items: center;
+}
+
+button {
+    height: 55vh;
+    width: 3vw;
+    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(2,245,255,1) 17.8%, rgb(147, 231, 121) 100.2% );
+    color:  rgb(0, 0, 0);
+    border: 5px solid black;
+
+}
+
+
+.infoPokemon {                                     /*  Elemento padre  */
+    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(147, 231, 121) 17.8%, rgba(2,245,255,1) 100.2% );
+    border: 10px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 80vh;
+    width: 15vw;
+    border-radius: 1em;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: rgb(249, 249, 252);
+    border: 5px solid black;
+    height: 22vh;
+    width: 10vw;
+}
+
+.stats p{
+    padding-left: 1em;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    background: black;
+    background-clip: text;
+    color: transparent;
+}
+
+.abilities {
+    background-color: rgb(249, 249, 252);
+    border: 5px solid black;
+    height: 20vh;
+    width: 10vw;
+}
+
+.moves {
+    background-color: rgb(249, 249, 252);
+    border: 5px solid black;
+    height: 20vh;
+    width: 10vw;
+}
+
+.pokeCard {                                     /*  Elemento padre  */
+    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(147, 231, 121) 17.8%, rgba(2,245,255,1) 100.2% );
+    border: 10px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 60vh;
+    width: 40vw;
+    border-radius: 2em;
+}
+
+#namePoke {
+    font-size: 30;
+    color: white;
+}
+
+.viewPoke {
+    display: flex;
+    justify-content: space-between;
+}
+
+.viewPoke img {
+    height: 40vh;
+    width: auto;
+    background-image: url(../img/fondo2.png);
+    background-size: cover;
+}
+
+.tipos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tipos p {
+    padding: 1em;
+}
+
+.nextPokemon {                                     /*  Elemento padre  */
+    background:radial-gradient( circle farthest-corner at 10% 20%,  rgb(147, 231, 121) 17.8%, rgba(2,245,255,1) 100.2% );
+    border: 10px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 80vh;
+    width: 15vw;
+    flex-wrap: wrap;
+    border-radius: 1em;
+}
+
+.onepoke {
+    background-color: rgb(249, 249, 252);
+    border: 5px solid black;
+    height: 20vh;
+    width: 10vw;
+}
+
+.twopoke {
+    background-color: rgb(249, 249, 252);
+    border: 5px solid black;
+    height: 20vh;
+    width: 10vw;
+}
+
+.treepoke {
+    background-color: rgb(249, 249, 252);
+    border: 5px solid black;
+    height: 20vh;
+    width: 10vw;
+}
