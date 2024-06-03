@@ -51,7 +51,6 @@ export const pokedata = async (pagina) => {
 const paginas = document.querySelectorAll(".page")
 paginas.forEach(button => {
     button.addEventListener('click', () => {
-
         const pagina = parseInt(button.innerText)
         console.log(pagina)
         pokedata(pagina)

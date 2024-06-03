@@ -17,7 +17,6 @@ const typeColor = {
     dark: '#705848',
     steel: '#B8B8D0',
     fairy: '#F0B6BC',
-
 }
 
 
@@ -44,6 +43,7 @@ export function pokeContainer(pokemon) {
     const pokeCard = document.createElement('div')
     pokeCard.classList.add('border', 'ms-3', 'my-3', 'shadow-xl')
     pokeCard.innerHTML = `
+    <div>
     <img id="pokeSprite" src="${pokemon.sprites.front_default}" alt="Quien es ese pokemon?">
     <h1 class="text-center">#${pokemon.id}</h1>
     <h2 class="text-center " id="pokeName">${pokemon.name}</h2>
@@ -51,7 +51,6 @@ export function pokeContainer(pokemon) {
     <p class= "rounded-full mx-4 my-1 border-2" style ="background-color:${color1}">${tipo1}</p>
     ${tipo2 ? `<p id="tipo2" class="rounded-full mx-4 my-2 border-2" style="background-color:${color2}">${tipo2}</p>` : ''}
     </div>
-    
     `
     container.appendChild(pokeCard)   
 }
