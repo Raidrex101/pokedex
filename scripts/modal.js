@@ -1,16 +1,19 @@
-
 const containerPrincipal = document.querySelector(".contenedor")
 const infopokemon = document.querySelector(".infoPokemon")
 const bloqueCentral = document.querySelector(".bloqueCentral")
 const nextPoke = document.querySelector("#nextPoke")
 const previousPoke = document.querySelector("#previousPoke")
 const galeriapokemon = document.querySelector(".galeriaPokemon")
-
 const containerPokemon = document.querySelector(".containerPokemon")
 
-/* const pokemensaje = document.querySelector(`${pokemon.id}`)
-console.log(pokemensaje); */
-let id = 1
+const pokeMensaje = document.querySelector(".pokeMensaje")
+const pokeString = pokeMensaje.outerHTML
+
+const parser = new DOMParser();
+const doc = parser.parseFromString(pokeString, 'text/html');
+const divElement = doc.querySelector('div');
+const pokeId = divElement.classList[0]; 
+let id = pokeId
 
 const pokecard = document.createElement("div")
 pokecard.classList.add("pokeCard")
@@ -33,13 +36,13 @@ twopoke.classList.add("twopoke")
 const treepoke = document.createElement("div")
 treepoke.classList.add("treepoke")
 
-
+let pokemon = []
 
 const getdata = async (id) => {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
         const data = await response.json()
-        console.log(data)
+        pokemon = data
 
         let name = ""
         name = data.name
@@ -188,6 +191,40 @@ const getdata = async (id) => {
                 break;
         }
 
+        const typeColor = {
+            normal: '#A8A878',
+            bug: '#A8B820',
+            fire: '#F08030',
+            water: '#6890F0',
+            electric: '#F8D030',
+            grass: '#78C850',
+            ice: '#98D8D8',
+            fighting: '#C03028',
+            poison: '#A040A0',
+            ground: '#E0C068',
+            flying: '#A890F0',
+            psychic: '#F85888',
+            rock: '#B8A038',
+            ghost: '#705898',
+            dragon: '#7038F8',
+            dark: '#705848',
+            steel: '#B8B8D0',
+            fairy: '#F0B6BC',
+        }
+        
+        
+        function typesColor(pokemon) {
+            const types = pokemon.types.map(tipo => tipo.type.name)
+            const tipo1 = types[0]
+            const tipo2 = types[1] || ''
+        
+            const color1 = typeColor[tipo1]
+            const color2 = tipo2 ? typeColor[tipo2] : ''
+            return { color1, color2 }
+        }
+
+        const { color1, color2 } = typesColor(pokemon)
+
 
         /* Carta pokemon */
 
@@ -199,8 +236,8 @@ const getdata = async (id) => {
                 <img id="imagePoke" src="${data.sprites.front_default}">    
             </div>
             <div class="tipos">
-                <p id="typePoke1" >${colorType1.toUpperCase()}</p>
-                ${colorType2 ? `<p id="typePoke2" >${colorType2.toUpperCase()}</p>` : ""}
+                <p id="typePoke1" class="rounded-full mx-4 my-2 border-2" style="background-color:${color1}">${colorType1.toUpperCase()}</p>
+                ${colorType2 ? `<p id="typePoke2" class="rounded-full mx-4 my-2 border-2" style="background-color:${color2}">${colorType2.toUpperCase()}</p>` : ""}
             </div> 
         `
         containerPokemon.appendChild(pokecard)
@@ -251,7 +288,7 @@ const getdata = async (id) => {
         `
         galeriapokemon.appendChild(treepoke)
 
-
+        return;
 
     } catch (error) {
         console.log(error)
@@ -329,3 +366,4 @@ previousPoke.addEventListener("click", () => {
 
     }
 })
+

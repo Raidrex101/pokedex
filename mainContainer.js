@@ -1,5 +1,5 @@
 const typeColor = {
-    normal:'#A8A878' ,
+    normal: '#A8A878',
     bug: '#A8B820',
     fire: '#F08030',
     water: '#6890F0',
@@ -20,26 +20,26 @@ const typeColor = {
 }
 
 
- export function typesColor (pokemon) {
+export function typesColor(pokemon) {
     const types = pokemon.types.map(tipo => tipo.type.name)
     const tipo1 = types[0]
     const tipo2 = types[1] || ''
-    
+
     const color1 = typeColor[tipo1]
     const color2 = tipo2 ? typeColor[tipo2] : ''
-    return {color1, color2}
+    return { color1, color2 }
 }
 
 
 export function pokeContainer(pokemon) {
 
     const types = pokemon.types.map(tipo => tipo.type.name)
-    
+
     const tipo1 = types[0]
     const tipo2 = types[1]
-    
-    const {color1, color2} = typesColor(pokemon)
-    
+
+    const { color1, color2 } = typesColor(pokemon)
+
     const container = document.getElementById('container')
     const pokeCard = document.createElement('div')
     pokeCard.classList.add('border', 'ms-3', 'my-3', 'shadow-xl')
@@ -55,22 +55,52 @@ export function pokeContainer(pokemon) {
     </div>
     </button>
     `
-    
+
     container.appendChild(pokeCard)
-    
+
     const modal = document.querySelector("#modal")
-    const pokeModal = document.getElementById(`${pokemon.id}`)
+
+    modal.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            event.preventDefault();
+        }
+    });
+    let pokeId = 0
+    pokeId = pokemon.id
+
+    const pokeModal = document.getElementById(`${pokeId}`)
 
     pokeModal.addEventListener('click', () => {
         const pokeMensaje = document.createElement('div')
-        pokeMensaje.classList.add(`${pokemon.id}`)
+        pokeMensaje.classList.add(`${pokeId}`)
         pokeMensaje.classList.add(`pokeMensaje`)
-        let pokemonId = pokemon.id
-        return pokemonId
-       
-
 
         modal.appendChild(pokeMensaje)
+
+        const miScript = document.createElement('script');
+        miScript.classList.add("scriptModal")
+        miScript.src = 'scripts/modal.js';
+        miScript.defer = true;
+
+        modal.appendChild(miScript)
+
         modal.showModal()
+        pokeId = 0
     })
+
+    
 }
+
+const closeModal = document.querySelector(".closeModal")
+
+    closeModal.addEventListener("click", () => {
+        const removePokeMensaje = document.querySelector(".pokeMensaje")
+        removePokeMensaje.remove("")
+        
+        const scriptAEliminar = document.querySelector('.scriptModal');
+        scriptAEliminar.remove();
+        modal.close()
+        window.location.reload();
+        sessionStorage.clear()
+        localStorage.clear()
+    })

@@ -1,4 +1,4 @@
-
+const pokemonData = []
 import { pokeContainer } from "./mainContainer.js"
 import { typesColor } from "./mainContainer.js"
 document.addEventListener('DOMContentLoaded', () => {
@@ -38,7 +38,7 @@ export const pokedata = async (pagina) => {
     pokemonFetched()
 }
 
- const pokemonFetched = () => {
+export const pokemonFetched = () => {
     const container = document.getElementById("container")
     container.innerHTML = ''
     pokemonData.forEach(pokemon => {
@@ -48,7 +48,7 @@ export const pokedata = async (pagina) => {
 }
 
 
-const paginas = document.querySelectorAll(".page")
+export const paginas = document.querySelectorAll(".page")
 paginas.forEach(button => {
     button.addEventListener('click', () => {
         const pagina = parseInt(button.innerText)
@@ -56,15 +56,3 @@ paginas.forEach(button => {
         pokedata(pagina)
     })
 })
-
-
-
-console.log(pokemonData)
-
-/* const openModal = document.querySelector("#openModal") */
-/* const modal = document.querySelector("#modal")
-
-openModal.addEventListener("click", () =>{
-    modal.showModal()
-}) */
-
