@@ -40,6 +40,9 @@ const getdata = async (id) => {
         const data = await response.json()
         console.log(data)
 
+        let name = ""
+        name = data.name
+
         const tipos = data.types.map(tipo => tipo.type.name)
         let colorType1 = ""
         let colorType2 = ""
@@ -189,7 +192,7 @@ const getdata = async (id) => {
 
 
         pokecard.innerHTML = `
-        <h1 id="namePoke">${data.name}</h1>
+        <h1 id="namePoke">${name.toLocaleUpperCase()}</h1>
         <h2 id="namePoke">#${data.id}</h2>
             <div class="viewPoke">
                 <img id="imagePoke" src="${data.sprites.front_default}">    
@@ -262,6 +265,7 @@ nextPoke.addEventListener("click", () => {
         id++
         const getcolor = async (id) => {
             try {
+                
                 const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id - 1}`)
                 const data = await response.json()
 

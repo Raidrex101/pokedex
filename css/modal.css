@@ -20,6 +20,17 @@ div ::-webkit-scrollbar-thumb {
     /*  Elemento padre  */
     display: flex;
     justify-content: space-evenly;
+    padding: 2em;
+    border: .5em, black solid;
+    border-radius: 1em;
+}
+
+#modal {
+    border-radius: 1em;
+}
+
+#modal::backdrop{
+    background-color: rgba(0,0,0,.80);
 }
 
 .bloqueCentral {
@@ -27,12 +38,24 @@ div ::-webkit-scrollbar-thumb {
     align-items: center;
 }
 
-button {
+.bloqueCentral button {
     height: 55vh;
     width: 3vw;
     color: rgb(0, 0, 0);
     border: 5px solid black;
 }
+
+#nextPoke{
+    margin-right: 1em;
+    margin-left: .5em;
+}
+
+#previousPoke {
+    margin-right: .5em;
+    margin-left: 1em;
+}
+
+
 
 
 .infoPokemon {
@@ -144,7 +167,8 @@ button {
 }
 
 .onepoke {
-    background-color: rgb(249, 249, 252);
+    background-image: url(../img/fondo3.jpeg);
+    background-size: cover;
     flex-wrap: wrap;
     border: 5px solid black;
     height: 20vh;
@@ -152,14 +176,16 @@ button {
 }
 
 .twopoke {
-    background-color: rgb(249, 249, 252);
+    background-image: url(../img/fondo3.jpeg);
+    background-size: cover;
     border: 5px solid black;
     height: 20vh;
     width: 10vw;
 }
 
 .treepoke {
-    background-color: rgb(249, 249, 252);
+    background-image: url(../img/fondo3.jpeg);
+    background-size: cover;
     border: 5px solid black;
     height: 20vh;
     width: 10vw;
@@ -168,9 +194,7 @@ button {
 .galeriaPokemon img {
     height: 20vh;
     width: 10vw;
-    background-image: url(../img/fondo3.jpeg);
-    background-size: cover;
-
+    flex-wrap: wrap;
 }
 
 .isnormal {
@@ -230,7 +254,7 @@ button {
 }
 
 .isdragon{
-    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(180, 163, 6) 17.8%, rgb(255, 255, 255) 100.2%);
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(180, 163, 6) 17.8%, rgb(116, 115, 115) 100.2%);
 }
 
 .isdark {

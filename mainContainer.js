@@ -30,6 +30,8 @@ const typeColor = {
     return {color1, color2}
 }
 
+let contadorid = 1
+
 export function pokeContainer(pokemon) {
 
     const types = pokemon.types.map(tipo => tipo.type.name)
@@ -43,7 +45,7 @@ export function pokeContainer(pokemon) {
     const pokeCard = document.createElement('div')
     pokeCard.classList.add('border', 'ms-3', 'my-3', 'shadow-xl')
     pokeCard.innerHTML = `
-    <div>
+    <div id='${contadorid}'>
     <img id="pokeSprite" src="${pokemon.sprites.front_default}" alt="Quien es ese pokemon?">
     <h1 class="text-center">#${pokemon.id}</h1>
     <h2 class="text-center " id="pokeName">${pokemon.name}</h2>
@@ -52,5 +54,6 @@ export function pokeContainer(pokemon) {
     ${tipo2 ? `<p id="tipo2" class="rounded-full mx-4 my-2 border-2" style="background-color:${color2}">${tipo2}</p>` : ''}
     </div>
     `
+    contadorid++
     container.appendChild(pokeCard)   
 }
