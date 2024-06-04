@@ -1,3 +1,4 @@
+
 const containerPrincipal = document.querySelector(".contenedor")
 const infopokemon = document.querySelector(".infoPokemon")
 const bloqueCentral = document.querySelector(".bloqueCentral")
@@ -7,9 +8,9 @@ const galeriapokemon = document.querySelector(".galeriaPokemon")
 
 const containerPokemon = document.querySelector(".containerPokemon")
 
-
-
-let id = 1;
+/* const pokemensaje = document.querySelector(`${pokemon.id}`)
+console.log(pokemensaje); */
+let id = 1
 
 const pokecard = document.createElement("div")
 pokecard.classList.add("pokeCard")
@@ -302,6 +303,7 @@ previousPoke.addEventListener("click", () => {
             try {
                 const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id + 1}`)
                 const data = await response.json()
+                
 
                 const colorType = data.types[0].type.name
                 const removerType = `is${colorType}`
@@ -317,7 +319,7 @@ previousPoke.addEventListener("click", () => {
                 galeriapokemon.innerHTML = ``
 
                 getdata(id)
-
+                return data
             } catch (error) {
                 console.log(error)
             }

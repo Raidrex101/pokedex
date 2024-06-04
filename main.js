@@ -1,4 +1,4 @@
-export const pokemonData = [] 
+
 import { pokeContainer } from "./mainContainer.js"
 import { typesColor } from "./mainContainer.js"
 document.addEventListener('DOMContentLoaded', () => {
@@ -61,10 +61,10 @@ paginas.forEach(button => {
 
 console.log(pokemonData)
 
-const openModal = document.querySelector("#openModal")
-const modal = document.querySelector("#modal")
+/* const openModal = document.querySelector("#openModal") */
+/* const modal = document.querySelector("#modal")
 
 openModal.addEventListener("click", () =>{
     modal.showModal()
-})
+}) */
 
