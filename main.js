@@ -64,7 +64,7 @@ console.log(pokemonData)
 const openModal = document.querySelector("#openModal")
 const modal = document.querySelector("#modal")
 
-
 openModal.addEventListener("click", () =>{
     modal.showModal()
 })
+
