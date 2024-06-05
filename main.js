@@ -56,3 +56,5 @@ paginas.forEach(button => {
         pokedata(pagina)
     })
 })
+
+console.log(pokemonData);
