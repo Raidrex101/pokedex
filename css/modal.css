@@ -1,5 +1,5 @@
 #background{
-    background-image: url(/img/pokedex-background.png);
+    background-image: url(../img/pokedex-background.png);
     image-resolution: 30dpi;
     position: absolute;
     background-size: cover;
@@ -9,7 +9,7 @@
     height: 10vh;
     }
 #searching {
-    background-image: url(/img/pokedex-top.png);
+    background-image: url(../img/pokedex-top.png);
     position: fixed;
     background-size: cover;
     margin: 0;
@@ -26,6 +26,7 @@
 }
 
 #search{
+   
     font-size: xx-large;
 background-color:transparent;
 text-align: center;
@@ -35,7 +36,7 @@ width: 96.8rem;
 }
 
 #searchButton{
-    border: 1px solid blue;
+    
     width: 9rem;
     height: 9rem;
     border-radius: 10rem;
