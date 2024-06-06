@@ -3,8 +3,9 @@ import { pokeContainer } from "./mainContainer.js"
 import { typesColor } from "./mainContainer.js"
 document.addEventListener('DOMContentLoaded', () => {
     pokedata(1)
+    observeChanges()
 })
-
+let pokemonDataProxy
 
 const getdata = async (id) => {
     try {
@@ -17,7 +18,7 @@ const getdata = async (id) => {
 }
 
 
-export const pokedata = async (pagina) => {
+const pokedata = async (pagina) => {
     pokemonData.length = 0
     let start, end
 
@@ -38,7 +39,7 @@ export const pokedata = async (pagina) => {
     pokemonFetched()
 }
 
-export const pokemonFetched = () => {
+const pokemonFetched = () => {
     const container = document.getElementById("container")
     container.innerHTML = ''
     pokemonData.forEach(pokemon => {
@@ -57,4 +58,46 @@ paginas.forEach(button => {
     })
 })
 
-console.log(pokemonData);
+
+
+const searchButton = document.getElementById("searchButton")
+
+searchButton.addEventListener('click' , () => {
+    
+    const searchInput = document.getElementById('search').value
+    
+    pokesearch(searchInput, pokemonData)
+    
+})
+
+const pokesearch = (searchInput, pokemonData) => {
+    if (searchInput.trim() === "") {
+        pokedata(1)
+    } else {
+        const pokeFilter = pokemonData.filter(pokemon => {
+            return pokemon.name.toLowerCase().includes(searchInput.toLowerCase());
+        }).map(pokemon => {
+            return { id: pokemon.id, name: pokemon.name, types: pokemon.types, sprites: pokemon.sprites }
+        })
+        
+        pokemonData.length = 0
+        pokeFilter.forEach(pokemon => {
+            pokemonData.push(pokemon)
+        })
+        
+        pokemonFetched()
+        console.log(pokemonData)
+    }
+}
+
+
+const observeChanges = () => {
+    pokemonDataProxy = new Proxy(pokemonData, {
+        set: function(target, key, value) {
+            target[key] = value
+            return true
+        }
+    });
+    
+};
+
