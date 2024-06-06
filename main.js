@@ -1,34 +1,38 @@
-const pokemonData = []
-import { pokeContainer } from "./mainContainer.js"
-import { typesColor } from "./mainContainer.js"
+import { pokeContainer, typesColor } from "./mainContainer.js"
+
+let pokemonData = []
+let originalPokemonData = []
+
 document.addEventListener('DOMContentLoaded', () => {
     pokedata(1)
     observeChanges()
 })
-let pokemonDataProxy
+
+let pokemonDataProxy;
 
 const getdata = async (id) => {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
         const data = await response.json()
         pokemonData.push(data)
+        originalPokemonData.push(data)
     } catch (error) {
         console.log(error)
     }
 }
 
-
 const pokedata = async (pagina) => {
     pokemonData.length = 0
-    let start, end
+    originalPokemonData.length = 0
 
+    let start, end
     if (pagina === 1) {
         start = 1
-        end = 50  
-    }else if (pagina === 2) {
+        end = 50
+    } else if (pagina === 2) {
         start = 51
         end = 100
-    }else if (pagina === 3) {
+    } else if (pagina === 3) {
         start = 101
         end = 151
     }
@@ -45,59 +49,55 @@ const pokemonFetched = () => {
     pokemonData.forEach(pokemon => {
         pokeContainer(pokemon)
         typesColor(pokemon)
-    });
+    })
 }
-
 
 export const paginas = document.querySelectorAll(".page")
 paginas.forEach(button => {
     button.addEventListener('click', () => {
         const pagina = parseInt(button.innerText)
-        console.log(pagina)
+        
         pokedata(pagina)
     })
 })
 
-
-
 const searchButton = document.getElementById("searchButton")
 
-searchButton.addEventListener('click' , () => {
-    
-    const searchInput = document.getElementById('search').value
-    
-    pokesearch(searchInput, pokemonData)
-    
+searchButton.addEventListener('click', () => {
+    const searchInput = document.getElementById('search').value;
+    pokesearch(searchInput)
+    document.getElementById('search').value = ''
 })
 
-const pokesearch = (searchInput, pokemonData) => {
+const pokesearch = (searchInput) => {
     if (searchInput.trim() === "") {
-        pokedata(1)
+        
+        pokemonData.length = 0
+        originalPokemonData.forEach(pokemon => {
+            pokemonData.push(pokemon)
+        })
     } else {
-        const pokeFilter = pokemonData.filter(pokemon => {
-            return pokemon.name.toLowerCase().includes(searchInput.toLowerCase());
+        const pokeFilter = originalPokemonData.filter(pokemon => {
+            return pokemon.name.toLowerCase().includes(searchInput.toLowerCase())
         }).map(pokemon => {
             return { id: pokemon.id, name: pokemon.name, types: pokemon.types, sprites: pokemon.sprites }
         })
-        
+
         pokemonData.length = 0
         pokeFilter.forEach(pokemon => {
             pokemonData.push(pokemon)
         })
-        
-        pokemonFetched()
-        console.log(pokemonData)
     }
+    pokemonFetched()
 }
-
 
 const observeChanges = () => {
     pokemonDataProxy = new Proxy(pokemonData, {
         set: function(target, key, value) {
             target[key] = value
+            pokemonFetched()
             return true
         }
-    });
+    })
     
-};
-
+}
