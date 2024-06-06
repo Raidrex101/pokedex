@@ -4,11 +4,11 @@ let pokemonData = []
 let originalPokemonData = []
 
 document.addEventListener('DOMContentLoaded', () => {
-    pokedata(1)
+    pokedata(151)
     observeChanges()
 })
 
-let pokemonDataProxy;
+let pokemonDataProxy
 
 const getdata = async (id) => {
     try {
@@ -21,28 +21,11 @@ const getdata = async (id) => {
     }
 }
 
-const pokedata = async (pagina) => {
-    pokemonData.length = 0
-    originalPokemonData.length = 0
-
-    let start, end
-    if (pagina === 1) {
-        start = 1
-        end = 50
-    } else if (pagina === 2) {
-        start = 51
-        end = 100
-    } else if (pagina === 3) {
-        start = 101
-        end = 151
-    }
-
-    for (let i = start; i <= end; i++) {
+const pokedata = async (number) => {
+    for (let i = 1; i <= number; i++)
         await getdata(i)
-    }
     pokemonFetched()
 }
-
 const pokemonFetched = () => {
     const container = document.getElementById("container")
     container.innerHTML = ''
@@ -52,14 +35,14 @@ const pokemonFetched = () => {
     })
 }
 
-export const paginas = document.querySelectorAll(".page")
+/* export const paginas = document.querySelectorAll(".page")
 paginas.forEach(button => {
     button.addEventListener('click', () => {
         const pagina = parseInt(button.innerText)
         
         pokedata(pagina)
     })
-})
+}) */
 
 const searchButton = document.getElementById("searchButton")
 
@@ -71,7 +54,7 @@ searchButton.addEventListener('click', () => {
 
 const pokesearch = (searchInput) => {
     if (searchInput.trim() === "") {
-        
+
         pokemonData.length = 0
         originalPokemonData.forEach(pokemon => {
             pokemonData.push(pokemon)
@@ -93,11 +76,11 @@ const pokesearch = (searchInput) => {
 
 const observeChanges = () => {
     pokemonDataProxy = new Proxy(pokemonData, {
-        set: function(target, key, value) {
+        set: function (target, key, value) {
             target[key] = value
             pokemonFetched()
             return true
         }
     })
-    
+
 }

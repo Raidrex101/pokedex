@@ -46,9 +46,9 @@ export function pokeContainer(pokemon) {
     pokeCard.innerHTML = `
     <button id='${pokemon.id}'>
     <div>
-    <img id="pokeSprite" src="${pokemon.sprites.front_default}" alt="Quien es ese pokemon?">
+    <img id="pokeSprite " src="${pokemon.sprites.front_default}" alt="Quien es ese pokemon?">
     <h1 class="text-center">#${pokemon.id}</h1>
-    <h2 class="text-center " id="pokeName">${pokemon.name}</h2>
+    <h2 class="text-center rounded-full mx-4 my-1 border-2" style ="background-color:silver" id="pokeName">${pokemon.name}</h2>
     <div class="text-center" id="poketipos">
     <p class= "rounded-full mx-4 my-1 border-2" style ="background-color:${color1}">${tipo1}</p>
     ${tipo2 ? `<p id="tipo2" class="rounded-full mx-4 my-2 border-2" style="background-color:${color2}">${tipo2}</p>` : ''}

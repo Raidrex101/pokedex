@@ -15,22 +15,21 @@
   <title>Pokedex</title>
 </head>
 
-<body>
+<body id="background">
   <audio class="hidden" controls autoplay loop>
     <source src="./songs/Pokémon Red & Blue Music_ Opening Theme.mp3" type="audio/mpeg">
   </audio>
-  <header>
-    <h1>Pokedex</h1>
-    <input id="search" type="search" placeholder="Search a pokemon">
-    <button id="searchButton">Search</button>
-    <button id="random">¿Quien es ese pokemon?</button>
-    <button id="openModal">Open Modal</button>
+  <header class="flex items-center" id="searching">
+    
+    <button class="ml-[1.3rem] mb-[1.5rem]" id="searchButton">Search</button>
+    <input class=" ml-[10.5rem] mb-[1rem]" id="search" type="search" placeholder="Search a pokemon">
+    <!-- <button id="random">¿Quien es ese pokemon?</button> -->
   </header>
   <div id="container" class="flex flex-wrap">
 
 
-  </div> <!-- paginador -->
-  <div class="flex items-center gap-4">
+  </div > <!-- paginador -->
+  <div id="paginador" class="flex items-center gap-4">
     <button disabled
       class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
       type="button">
