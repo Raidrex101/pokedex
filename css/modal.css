@@ -1,13 +1,17 @@
-#background{
+#background {
     background-image: url(../img/pokedex-background.png);
     image-resolution: 30dpi;
-    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
     background-size: cover;
     background-attachment: fixed;
     z-index: -1;
     width: 200vh;
     height: 10vh;
-    }
+    justify-content: center;
+
+}
+
 #searching {
     background-image: url(../img/pokedex-top.png);
     position: fixed;
@@ -16,35 +20,47 @@
     width: 200vh;
     height: 21.2vh;
 }
+
 #container {
-    margin-top: 12rem;
+    margin-top: 15rem;
     margin-left: 1rem;
+    flex-wrap: wrap;
+    width: 80vw;
+    justify-content: space-evenly;
+    background-color: rgb(0, 0, 0, .32);
+    margin: 1em, black, solid;
+    flex-direction:initial;
+    word-wrap: break-word;
+
 }
 
 #paginador {
     display: none;
 }
 
-#search{
-   
+#search {
+
     font-size: xx-large;
-background-color:transparent;
-text-align: center;
-color: white;
-height: 6.5rem;
-width: 96.8rem;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    height: 6.5rem;
+    width: 96.8rem;
 }
 
-#searchButton{
-    
+.pokeCardHome {
+}
+
+#searchButton {
+
     width: 9rem;
     height: 9rem;
     border-radius: 10rem;
 }
 
 input::placeholder {
-    font-size:xx-large;
-    color:white;
+    font-size: xx-large;
+    color: white;
     opacity: 1;
 }
 
@@ -89,8 +105,8 @@ div ::-webkit-scrollbar-thumb {
     border-radius: 1em;
 }
 
-#modal::backdrop{
-    background-color: rgba(0,0,0,.80);
+#modal::backdrop {
+    background-color: rgba(0, 0, 0, .80);
 }
 
 .bloqueCentral {
@@ -105,7 +121,7 @@ div ::-webkit-scrollbar-thumb {
     border: 5px solid black;
 }
 
-#nextPoke{
+#nextPoke {
     margin-right: 1em;
     margin-left: .5em;
 }
@@ -277,7 +293,7 @@ div ::-webkit-scrollbar-thumb {
     background: radial-gradient(circle farthest-corner at 10% 20%, rgb(252, 247, 0) 17.8%, rgb(0, 0, 0) 100.2%);
 }
 
-.isgrass{
+.isgrass {
     background: radial-gradient(circle farthest-corner at 10% 20%, rgb(147, 231, 121) 17.8%, rgba(2, 245, 255, 1) 100.2%);
 }
 
@@ -313,7 +329,7 @@ div ::-webkit-scrollbar-thumb {
     background: radial-gradient(circle farthest-corner at 10% 20%, rgb(47, 0, 68) 17.8%, rgb(255, 255, 255) 100.2%);
 }
 
-.isdragon{
+.isdragon {
     background: radial-gradient(circle farthest-corner at 10% 20%, rgb(180, 163, 6) 17.8%, rgb(116, 115, 115) 100.2%);
 }
 
