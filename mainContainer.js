@@ -57,50 +57,12 @@ export function pokeContainer(pokemon) {
     `
 
     container.appendChild(pokeCard)
-
-    const modal = document.querySelector("#modal")
-
-    modal.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            event.preventDefault();
-        }
-    });
-    let pokeId = 0
-    pokeId = pokemon.id
-
-    const pokeModal = document.getElementById(`${pokeId}`)
-
-    pokeModal.addEventListener('click', () => {
-        const pokeMensaje = document.createElement('div')
-        pokeMensaje.classList.add(`${pokeId}`)
-        pokeMensaje.classList.add(`pokeMensaje`)
-
-        modal.appendChild(pokeMensaje)
-
-        const miScript = document.createElement('script');
-        miScript.classList.add("scriptModal")
-        miScript.src = 'scripts/modal.js';
-        miScript.defer = true;
-
-        modal.appendChild(miScript)
-
-        modal.showModal()
-        pokeId = 0
-    })
-
-    
+    return pokemon.id
 }
 
+const modal = document.querySelector("#modal")
 const closeModal = document.querySelector(".closeModal")
 
-    closeModal.addEventListener("click", () => {
-        const removePokeMensaje = document.querySelector(".pokeMensaje")
-        removePokeMensaje.remove("")
-        
-        const scriptAEliminar = document.querySelector('.scriptModal');
-        scriptAEliminar.remove();
+    closeModal.addEventListener("click", () => {       
         modal.close()
-        window.location.reload();
-        sessionStorage.clear()
-        localStorage.clear()
     })
